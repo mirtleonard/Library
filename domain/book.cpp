@@ -3,6 +3,7 @@
 //
 
 #include "book.h"
+#include <iostream>
 #include <string>
 
 int Book::ID = 0;
@@ -19,7 +20,13 @@ void Book::modifyBook(const string &title, const string &author, const string &g
     this->year = year;
 }
 
+const string Book::stringify() const {
+    return to_string(id) + " | " + title + " | " + author + " | " + genre + " | " + to_string(year) + "\n";
+}
+
+/*
 ostream& operator<<(ostream& os, const Book &book) {
     os << to_string(book.getId()) + " | " + book.getTitle() + " | " + book.getAuthor() + " | " + book.getGenre() + " | " + to_string(book.getYear()) + "\n";
     return os;
 }
+ */

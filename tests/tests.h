@@ -7,10 +7,10 @@
 
 
 class Test {
-
 private:
     void testDomain();
     void testRepository();
+    void testService();
 public:
     void runTests();
 };

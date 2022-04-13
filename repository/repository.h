@@ -14,9 +14,19 @@ public:
     void addBook(const Book &book);
     void removeBook(const int &id);
     void modifyBook(const int &id, const Book &newBook);
+    const Book& searchBook(const int &id);
     const int findBook(const int &id);
     const string stringify();
+    const string filterBooks(const int &op, const string &key);
+    void sortBooks(const int &key);
 };
 
+class Compare {
+private:
+    int key;
+public:
+    Compare(const int &key);
+    bool operator() (Book x, Book y);
+};
 
 #endif //LAB6_7_REPOSITORY_H

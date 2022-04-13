@@ -10,6 +10,7 @@ using namespace std;
 class Book {
 
 private:
+    friend class Test;
     static int ID;
     string title, author, genre;
     int id;
@@ -34,6 +35,7 @@ public:
     const int getId() const {
         return id;
     }
+    const string stringify() const;
 };
 
 
