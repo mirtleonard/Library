@@ -17,9 +17,11 @@ private:
     int year;
 
 public:
+    Book() = default;
+    Book(const Book &book);
     Book(const string &title, const string &author, const string &genre, const int &year);
-    void modifyBook(const string &title, const string &author, const string &genre, const int &year);
-    friend ostream& operator<<(ostream& os, const Book& book);
+    //friend ostream& operator<<(ostream& os, const Book& book);
+    const string stringify() const;
     const string getTitle() const {
         return title;
     }
@@ -35,7 +37,18 @@ public:
     const int getId() const {
         return id;
     }
-    const string stringify() const;
+    void setTitle(const string &title) {
+        this->title = title;
+    }
+    void setAuthor(const string &author) {
+        this->author = author;
+    }
+    void setGenre(const string &genre) {
+        this->genre = genre;
+    }
+    void setYear(const int &year) {
+        this->year = year;
+    }
 };
 
 

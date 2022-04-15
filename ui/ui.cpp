@@ -48,7 +48,7 @@ void Ui::run() {
 }
 
 void Ui::help() {
-    cout << "Choose an action(number):\n";
+    cout << "Commands:\n";
     cout << "add\n";
     cout << "remove\n";
     cout << "modify\n";

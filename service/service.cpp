@@ -22,13 +22,11 @@ void Service::removeBook(const int &id) {
 }
 
 void Service::modifyBook(const int &id, const string &title, const string &author, const string &genre, const int &year) {
-    Book newBook = Book(title, author, genre, year);
     try {
-        repo.modifyBook(id, newBook);
+        repo.modifyBook(id, title, author, genre, year);
     } catch (const char *msg) {
         throw msg;
-    }
-}
+    }}
 
 const string Service::showBooks() {
     return repo.stringify();
@@ -36,7 +34,7 @@ const string Service::showBooks() {
 
 const string Service::searchBook(const int &id) {
     try {
-        Book book = repo.searchBook(id);
+        const Book &book = repo.searchBook(id);
         return book.stringify();
     } catch (const char *msg) {
         throw msg;

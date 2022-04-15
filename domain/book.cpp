@@ -10,14 +10,19 @@ int Book::ID = 0;
 
 Book::Book(const string &title, const string &author, const string &genre, const int &year) {
     this->id = ID++;
-    modifyBook(title, author, genre, year);
-}
-
-void Book::modifyBook(const string &title, const string &author, const string &genre, const int &year) {
     this->title = title;
     this->author = author;
     this->genre = genre;
     this->year = year;
+}
+
+Book::Book(const Book &book) {
+    cout << "Coping\n";
+    this->id = book.id;
+    this->title = book.title;
+    this->author = book.author;
+    this->genre = book.genre;
+    this->year = book.year;
 }
 
 const string Book::stringify() const {

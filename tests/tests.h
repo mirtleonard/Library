@@ -8,6 +8,7 @@
 
 class Test {
 private:
+    void testDynamicVector();
     void testDomain();
     void testRepository();
     void testService();
