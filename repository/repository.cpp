@@ -1,19 +1,19 @@
 //
 // Created by leonard on 09.04.2022.
 //
-
-#include "DynamicVector.h"
 #include "repository.h"
 #include <iostream>
 
-
 void Repository::addBook(const Book &book) {
-    list.add(book);
+    list.push_back(book);
 }
 
-const Book& Repository::searchBook(const int &id) {
-    int pos = findBook(id);
-    if (pos < 0) {
+const int Repository::getSize() {
+    return list.size();
+}
+
+const Book& Repository::getBook(const int &pos) {
+    if (pos < 0 || pos > list.size()) {
         throw "Invalid id";
     }
     return list[pos];
@@ -35,7 +35,7 @@ void Repository::removeBook(const int &id) {
     if (pos < 0) {
         throw "Invalid Id";
     }
-    list.remove(pos);
+    list.erase(list.begin() + pos);
 }
 
 void Repository::modifyBook(const int &id, const string &title, const string &author, const string &genre, const int &year) {

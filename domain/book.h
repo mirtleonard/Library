@@ -18,7 +18,6 @@ private:
 
 public:
     Book() = default;
-    Book(const Book &book);
     Book(const string &title, const string &author, const string &genre, const int &year);
     //friend ostream& operator<<(ostream& os, const Book& book);
     const string stringify() const;

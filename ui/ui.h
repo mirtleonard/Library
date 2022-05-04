@@ -5,22 +5,27 @@
 #ifndef LAB6_7_UI_H
 #define LAB6_7_UI_H
 
+#include <istream>
 #include "../service/service.h"
 
 class Ui {
 private:
+    istream &in;
     Service service;
     void addBook();
     void removeBook();
+    const int readNumber(string msg);
     void modifyBook();
     void searchBook();
     void showBooks();
     void filterBooks();
     void sortBooks();
+    void addToCart();
+    void generateCart();
     void help();
 public:
     void run();
-    Ui();
+    Ui(istream &in);
 };
 
 #endif //LAB6_7_UI_H

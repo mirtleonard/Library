@@ -16,15 +16,6 @@ Book::Book(const string &title, const string &author, const string &genre, const
     this->year = year;
 }
 
-Book::Book(const Book &book) {
-    cout << "Coping\n";
-    this->id = book.id;
-    this->title = book.title;
-    this->author = book.author;
-    this->genre = book.genre;
-    this->year = book.year;
-}
-
 const string Book::stringify() const {
     return to_string(id) + " | " + title + " | " + author + " | " + genre + " | " + to_string(year) + "\n";
 }

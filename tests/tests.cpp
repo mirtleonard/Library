@@ -15,7 +15,7 @@ void Test::runTests() {
     testDomain();
     testRepository();
     testService();
-    testDynamicVector();
+    testCart();
     Book::ID = 0;
 }
 
@@ -25,7 +25,6 @@ void Test::testDomain() {
     assert(book.getAuthor() == "Liviu Rebreanu");
     assert(book.getGenre() == "novel");
     assert(book.getYear() == 1920);
-    Book book2 = Book(book);
 }
 
 void Test::testRepository() {
@@ -49,6 +48,20 @@ void Test::testRepository() {
 void Test::testService() {
     Service srv = Service();
     srv.addBook("Ion", "Liviu Rebreanu", "novel", 1920);
+    srv.addToCart(4);
+    assert(srv.getCart() == "ID | Title | Author | Genre | year\n4 | Ion | Liviu Rebreanu | novel | 1920\n");
+    assert(srv.getCartSize() == 1);
+    srv.clearCart();
+    srv.generateCart(1);
+    assert(srv.getCart() == "ID | Title | Author | Genre | year\n4 | Ion | Liviu Rebreanu | novel | 1920\n");
+    try {
+        srv.generateCart(10);
+    } catch(const exception &e) {
+    }
+    try {
+        srv.addToCart(4);
+    } catch(const char *msg) {
+    }
     assert(srv.showBooks() == "ID | Title | Author | Genre | year\n4 | Ion | Liviu Rebreanu | novel | 1920\n");
     string book = srv.searchBook(4);
     assert(book == "4 | Ion | Liviu Rebreanu | novel | 1920\n");
@@ -76,33 +89,11 @@ void Test::testService() {
     }
     assert(srv.showBooks() == "ID | Title | Author | Genre | year\n");
 }
-void Test::testDynamicVector() {
-	DynamicVector<int>v,v2;
-	v.add(3);
-	v.add(4);
-	v.add(5);
-    v.add(5);
-    v.add(5);
-    v.add(5);
-    v.remove(3);
-    v2.add(21);
-    v2 = v;
-	assert(v.size() == 5);
-	assert(v[2] == 5);
-	v[2] = 6;
-	assert(v[2] == 6);
 
-	auto it = v.begin();
-	v.erase(it);
-
-	assert(v.size() == 4);
-
-	for (int i = 0; i <= 10; i++)
-		v.add(i);
-
-	auto it2 = v.begin();
-	while (it2 != v.end()) {
-		v.erase(it2);
-	}
-	assert(v.size() == 0);
+void Test::testCart() {
+   Cart cart = Cart();
+   Book book = Book("Ion", "Liviu Rebreanu", "novel", 1920);
+   cart.addBook(book);
+   cart.clearCart();
+   assert(cart.getSize() == 0);
 }
